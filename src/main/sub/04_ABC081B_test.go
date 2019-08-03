@@ -3,10 +3,11 @@ package sub
 import (
 	"fmt"
 	"strings"
+	"testing"
 )
 
-// Test1 test function.
-func Test1() {
+// Test test function.
+func Test(t *testing.T) {
 	var a string
 	fmt.Scanf("%s", &a)
 	fmt.Println(strings.Count(a, "1"))

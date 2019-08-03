@@ -8,5 +8,5 @@ import (
 
 func main() {
 	fmt.Printf("hello, world!\n")
-	sub.Test1()
+	sub.Test4()
 }
