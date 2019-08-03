@@ -1,2 +1,2 @@
-# tutorial
-git tutorial repository.
+# atcoder
+atcoder repository.
