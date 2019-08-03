@@ -8,12 +8,8 @@ import (
 // Test test function.
 func Test(t *testing.T) {
 	req := 2
-	resultI, resultB, err := DivideOfIsEven(req)
-	fmt.Printf("req : %d, result : %d, %t, %#v", req, resultI, resultB, err)
-	if err != nil {
-		t.Fatalf("failed test %#v", err)
-	}
-
+	resultI, resultB := DivideOfIsEven(req)
+	fmt.Printf("req : %d, result : %d, %t", req, resultI, resultB)
 	if resultI != 1 {
 		t.Fatal("failed test")
 	}
