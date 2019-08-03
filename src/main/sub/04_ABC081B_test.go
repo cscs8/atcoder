@@ -2,13 +2,23 @@ package sub
 
 import (
 	"fmt"
-	"strings"
 	"testing"
 )
 
 // Test test function.
 func Test(t *testing.T) {
-	var a string
-	fmt.Scanf("%s", &a)
-	fmt.Println(strings.Count(a, "1"))
+	req := 2
+	resultI, resultB, err := DivideOfIsEven(req)
+	fmt.Printf("req : %d, result : %d, %t, %#v", req, resultI, resultB, err)
+	if err != nil {
+		t.Fatalf("failed test %#v", err)
+	}
+
+	if resultI != 1 {
+		t.Fatal("failed test")
+	}
+
+	if !resultB {
+		t.Fatal("failed test")
+	}
 }
