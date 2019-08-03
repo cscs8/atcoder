@@ -6,8 +6,8 @@ import (
 )
 
 // DivideOfIsEven is..
-func DivideOfIsEven(a int) (int, bool) {
-	return a / 2, a%2 == 0
+func DivideOfIsEven(a int) (int, bool, error) {
+	return a / 2, a%2 == 0, nil
 }
 
 // Test4 test function.
