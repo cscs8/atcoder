@@ -65,7 +65,7 @@ func Test4() {
 		return
 	}
 
-	splitAn := strings.Split(an, " ")[:ni]
+	splitAn := strings.Fields(an)[:ni]
 	fmt.Println(run(splitAn))
 }
 
