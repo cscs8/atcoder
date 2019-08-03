@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"./sub"
+	"sub"
 )
 
 func main() {
