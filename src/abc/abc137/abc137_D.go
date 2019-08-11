@@ -55,5 +55,5 @@ func TestD() {
 		maxDayCost -= j.A
 		i++
 	}
-	fmt.Println(ret)
+	fmt.Print(ret)
 }
