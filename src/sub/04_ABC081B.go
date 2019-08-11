@@ -20,7 +20,7 @@ func Operation(array []int) ([]int, bool) {
 	for i := 0; i < len(array); i++ {
 		resultArray[i], isEven = DivideOfIsEven(array[i])
 		if !isEven {
-			return nil, false
+		return nil, false
 		}
 		if resultArray[i] == 0 {
 			return nil, false
