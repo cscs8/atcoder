@@ -59,17 +59,22 @@ func TestD() {
 	retList := []int{}
 	ret := 0
 	size := len(jobList)
+	next := 0
 	if m < len(jobList) {
 		size = m
 	}
-	// for _, j := range jobList[:size] {
 	for i := 1; i <= m; i++ {
-		for _, j := range jobList {
-			if j.A == i {
-				retList = append(retList, j.B)
+		fmt.Println("job:", jobList)
+		for ; next < len(jobList); next++ {
+			fmt.Println("next:", next)
+			// for _, j := range jobList {
+			if jobList[next].A == i {
+				retList = append(retList, jobList[next].B)
+				fmt.Println(retList)
 				continue
 			}
-			if j.A == i+1 {
+			if jobList[next].A == i+1 {
+				fmt.Println("break")
 				break
 			}
 		}
@@ -78,9 +83,11 @@ func TestD() {
 			continue
 		}
 		sort.Sort(DescBy(retList))
+		size = m - i + 1
 		if len(retList) > size {
 			retList = retList[:size]
 		}
+		fmt.Println("ここだよ")
 		fmt.Println(retList)
 
 		ret += retList[0]
