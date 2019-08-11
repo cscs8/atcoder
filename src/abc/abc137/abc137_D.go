@@ -20,15 +20,6 @@ func (a AscABy) Less(i, j int) bool {
 	return a[i].A < a[j].A
 }
 
-// DescBBy is ...
-type DescBBy []Job
-
-func (a DescBBy) Len() int      { return len(a) }
-func (a DescBBy) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-func (a DescBBy) Less(i, j int) bool {
-	return a[i].B < a[j].B
-}
-
 // DescBy is ...
 type DescBy []int
 
@@ -64,16 +55,12 @@ func TestD() {
 		size = m
 	}
 	for i := 1; i <= m; i++ {
-		fmt.Println("job:", jobList)
 		for ; next < len(jobList); next++ {
-			fmt.Println("next:", next)
 			if jobList[next].A == i {
 				retList = append(retList, jobList[next].B)
-				fmt.Println(retList)
 				continue
 			}
 			if jobList[next].A != i {
-				fmt.Println("break")
 				break
 			}
 		}
@@ -86,8 +73,6 @@ func TestD() {
 		if len(retList) > size {
 			retList = retList[:size]
 		}
-		fmt.Println("ここだよ")
-		fmt.Println(retList)
 
 		ret += retList[0]
 		retList[0] = 0
