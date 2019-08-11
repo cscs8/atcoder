@@ -1,58 +1,117 @@
 package abc137
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"sort"
-	"strconv"
-)
+// import (
+// 	"bufio"
+// 	"fmt"
+// 	"os"
+// 	"sort"
+// 	"strconv"
+// )
 
-// https://siongui.github.io/2017/05/07/go-sort-string-slice-of-rune/
-type ByRune []rune
+// type Comparable interface {
+// 	LessThan(Comparable) bool
+// }
 
-func (r ByRune) Len() int           { return len(r) }
-func (r ByRune) Swap(i, j int)      { r[i], r[j] = r[j], r[i] }
-func (r ByRune) Less(i, j int) bool { return r[i] < r[j] }
+// type ComparableSlice []Comparable
 
-func StringToRuneSlice(s string) []rune {
-	var r []rune
-	for _, runeValue := range s {
-		r = append(r, runeValue)
-	}
-	return r
-}
+// func (c ComparableSlice) Len() int {
+// 	return len(c)
+// }
 
-func SortStringByCharacter(s string) string {
-	var r ByRune = StringToRuneSlice(s)
-	sort.Sort(r)
-	return string(r)
-}
+// func (c ComparableSlice) Less(i, j int) bool {
+// 	return c[i].LessThan(c[j])
+// }
 
-// TestC is ...
-func TestC() {
-	var n int
+// func (c ComparableSlice) Swap(i, j int) {
+// 	c[i], c[j] = c[j], c[i]
+// }
 
-	var sc = bufio.NewScanner(os.Stdin)
-	if sc.Scan() {
-		n, _ = strconv.Atoi(sc.Text())
-	}
-	var list = make([]string, n)
-	for i := 0; i < n; i++ {
-		if sc.Scan() {
-			list[i] = sc.Text()
-		}
-	}
+// func SortComparables(elts []Comparable) {
+// 	sort.Sort(ComparableSlice(elts))
+// }
 
-	m := map[string]int{}
-	for _, s := range list {
-		m[SortStringByCharacter(s)]++
-	}
+// //////////////////////////////////////////////////////////////////////
+// // Let's try using this:
 
-	ret := 0
-	for _, v := range m {
-		ret += v * (v - 1) / 2
-	}
+// type ComparableRune rune
 
-	fmt.Println(ret)
-}
+// func (r1 ComparableRune) LessThan(o Comparable) bool {
+// 	return r1 < o.(ComparableRune)
+// }
+
+// // sort.type SortBy []Type
+
+// // func (a SortBy) Len() int           { return len(a) }
+// // func (a SortBy) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+// // func (a SortBy) Less(i, j int) bool { return a[i] < a[j] }
+// // TestC is ...
+// func TestC2() {
+// 	var n int
+
+// 	var sc = bufio.NewScanner(os.Stdin)
+// 	if sc.Scan() {
+// 		n, _ = strconv.Atoi(sc.Text())
+// 	}
+// 	var list = make([]string, n)
+// 	for i := 0; i < n; i++ {
+// 		if sc.Scan() {
+// 			list[i] = sc.Text()
+// 		}
+// 	}
+
+// 	fmt.Println("forここからだよ")
+
+// 	m := map[string]int{}
+// 	for i, s := range list {
+// 		fmt.Println("sort前: ", s)
+// 		sSlice := make([]string, len(s))
+// 		sort.Strings(sSlice)
+
+// 		fmt.Println("sort後: ", sSlice)
+// 		comparables := make(ComparableSlice, len(s))
+// 		for i, v := range s {
+// 			comparables[i] = ComparableRune(v)
+// 		}
+
+// 		SortComparables(comparables)
+
+// 		sortedRunes := make([]rune, len(s))
+// 		for i, v := range comparables {
+// 			sortedRunes[i] = rune(v.(ComparableRune))
+// 		}
+
+// 		fmt.Printf("result: %#v\n", string(sortedRunes))
+// 		list[i] = string(sortedRunes)
+// 		m[list[i]]++
+// 	}
+
+// 	fmt.Println("forここからだよ")
+// 	// ret := 0
+// 	// for i := 0; i < len(list)-1; i++ {
+// 	// 	for j := i + 1; j < len(list); j++ {
+// 	// 		fmt.Printf("%sと%sの比較:%t\n", list[i], list[j], list[i] == list[j])
+// 	// 		if list[i] == list[j] {
+// 	// 			ret++
+// 	// 		}
+// 	// 	}
+
+// 	// }
+// 	ret := 0
+// 	for _, v := range m {
+// 		ret += v * (v - 1) / 2
+// 	}
+
+// 	fmt.Println(ret)
+// }
+
+// // func removeDuplicate1(args []string) []string {
+// // 	results := make([]string, 0, len(args))
+// // 	encountered := map[string]bool{}
+// // 	for i := 0; i < len(args); i++ {
+// // 		if !encountered[args[i]] {
+// // 			encountered[args[i]] = true
+// // 			results = append(results, args[i])
+// // 		}
+// // 	}
+// // 	return results
+// // }

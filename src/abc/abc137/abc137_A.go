@@ -2,22 +2,17 @@ package abc137
 
 import (
 	"fmt"
+	"sort"
 )
 
 // TestA is ...
 func TestA() {
 	var a, b int
-	fmt.Scanf("%d %d", &a, &b)
+	fmt.Scan(&a, &b)
 
-	tmp := a + b
+	list := []int{a + b, a - b, a * b}
 
-	if tmp2 := a - b; tmp < tmp2 {
-		tmp = tmp2
-	}
+	sort.Ints(list)
 
-	if tmp2 := a * b; tmp < tmp2 {
-		tmp = tmp2
-	}
-
-	fmt.Println(tmp)
+	fmt.Print(list[len(list)-1])
 }
