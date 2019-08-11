@@ -67,13 +67,12 @@ func TestD() {
 		fmt.Println("job:", jobList)
 		for ; next < len(jobList); next++ {
 			fmt.Println("next:", next)
-			// for _, j := range jobList {
 			if jobList[next].A == i {
 				retList = append(retList, jobList[next].B)
 				fmt.Println(retList)
 				continue
 			}
-			if jobList[next].A == i+1 {
+			if jobList[next].A != i {
 				fmt.Println("break")
 				break
 			}
