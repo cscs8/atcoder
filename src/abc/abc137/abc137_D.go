@@ -48,21 +48,19 @@ func TestD() {
 	sort.Sort(AscABy(jobList))
 
 	retList := []int{}
-	ret := 0
+	ret, next := 0, 0
 	size := len(jobList)
-	next := 0
 	if m < len(jobList) {
 		size = m
 	}
+
 	for i := 1; i <= m; i++ {
 		for ; next < len(jobList); next++ {
-			if jobList[next].A == i {
-				retList = append(retList, jobList[next].B)
-				continue
-			}
-			if jobList[next].A != i {
+			if jobList[next].A > i {
 				break
 			}
+			retList = append(retList, jobList[next].B)
+			continue
 		}
 
 		if 0 == len(retList) {
