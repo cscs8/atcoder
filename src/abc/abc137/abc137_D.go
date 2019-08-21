@@ -21,8 +21,8 @@ func (a AscABy) Less(i, j int) bool {
 	return a[i].A < a[j].A
 }
 
-// https://golang.org/pkg/container/heap/#example__priorityQueue
 // A PriorityQueue implements heap.Interface and holds Jobs.
+// https://golang.org/pkg/container/heap/#example__priorityQueue
 type PriorityQueue []int
 
 func (pq PriorityQueue) Len() int { return len(pq) }
