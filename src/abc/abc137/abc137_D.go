@@ -1,6 +1,7 @@
 package abc137
 
 import (
+	"container/heap"
 	"fmt"
 	"sort"
 )
@@ -20,13 +21,36 @@ func (a AscABy) Less(i, j int) bool {
 	return a[i].A < a[j].A
 }
 
-// DescBy is ...
-type DescBy []int
+// A PriorityQueue implements heap.Interface and holds Jobs.
+type PriorityQueue []int
 
-func (a DescBy) Len() int      { return len(a) }
-func (a DescBy) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-func (a DescBy) Less(i, j int) bool {
-	return a[j] < a[i]
+func (pq PriorityQueue) Len() int { return len(pq) }
+
+func (pq PriorityQueue) Less(i, j int) bool {
+	// We want Pop to give us the highest, not lowest, priority so we use greater than here.
+	return pq[i] > pq[j]
+}
+
+func (pq PriorityQueue) Swap(i, j int) {
+	pq[i], pq[j] = pq[j], pq[i]
+}
+
+// Push is ...
+func (pq *PriorityQueue) Push(x interface{}) {
+	// n := len(*pq)
+	// job := x.(*jobs)
+	job := x.(int)
+	*pq = append(*pq, job)
+}
+
+// Pop is ...
+func (pq *PriorityQueue) Pop() interface{} {
+	old := *pq
+	n := len(old)
+	job := old[n-1]
+	// job.index = -1 // for safety
+	*pq = old[0 : n-1]
+	return job
 }
 
 // TestD is ...
@@ -47,33 +71,31 @@ func TestD() {
 	// A Asc JobList sort
 	sort.Sort(AscABy(jobList))
 
-	retList := []int{}
-	ret, next := 0, 0
-	size := len(jobList)
-	if m < len(jobList) {
-		size = m
-	}
+	ret, j := 0, 1
 
-	for i := 1; i <= m; i++ {
-		for ; next < len(jobList); next++ {
-			if jobList[next].A > i {
+	pq := make(PriorityQueue, len(jobList))
+	heap.Init(&pq)
+	for i := m - 1; i >= 0; i-- {
+		fmt.Println()
+		fmt.Println("i : ", i)
+		for ; len(jobList) >= j; j++ {
+			fmt.Println("j : ", j)
+			fmt.Println("j-1 : ", jobList[j-1].A)
+			if jobList[j-1].A > m-i {
 				break
 			}
-			retList = append(retList, jobList[next].B)
-			continue
+			fmt.Println("B : ", jobList[j-1].B)
+			heap.Push(&pq, jobList[j-1].B)
+			fmt.Println("pq : ", pq)
 		}
 
-		if 0 == len(retList) {
+		if 0 == len(pq) {
 			continue
 		}
-		sort.Sort(DescBy(retList))
-		size = m - i + 1
-		if len(retList) > size {
-			retList = retList[:size]
-		}
+		ret += heap.Pop(&pq).(int)
+		fmt.Println("pq : ", pq)
 
-		ret += retList[0]
-		retList[0] = 0
 	}
+	fmt.Println()
 	fmt.Print(ret)
 }
