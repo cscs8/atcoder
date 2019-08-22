@@ -1,8 +1,9 @@
 package main
 
 import (
-	"abs"
 	"fmt"
+
+	"github.com/cscs8/atcoder/internal/abs"
 )
 
 func main() {
