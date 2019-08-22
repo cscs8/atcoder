@@ -31,10 +31,6 @@ func Test5() {
 	}
 
 	ret := 0
-	cStart := 0
-	if mod := x % 100; mod != 0 {
-		cStart = 1
-	}
 
 	// 500円玉for
 	for i := aMax; i >= 0; i-- {
@@ -56,17 +52,9 @@ func Test5() {
 				continue
 			}
 
-			cCnt := cMax
-			if cTmp := tmp / 50; cMax > cCnt {
-				cCnt = cTmp
-			}
-			// 50円玉for
-			for k := cStart; cCnt >= k; k += 2 {
-				tmp = x - (500 * i) - (100 * j) - (50 * k)
-				if tmp == 0 {
-					ret++
-					break
-				}
+			// 50円玉
+			if divideC := tmp / 50; cMax >= divideC {
+				ret++
 			}
 		}
 	}
