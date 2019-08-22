@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// Test2 test function.
-func Test2() {
+// Test3 test function.
+func Test3() {
 	var a string
 	fmt.Scanf("%s", &a)
 	fmt.Println(strings.Count(a, "1"))
