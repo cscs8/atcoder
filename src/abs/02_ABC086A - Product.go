@@ -12,8 +12,8 @@ func OddOrEvenStr(a, b int) string {
 	return "Odd"
 }
 
-// Main is ...
-func Main() {
+// Test2 is ...
+func Test2() {
 	var a, b int
 	fmt.Scanf("%d %d", &a, &b)
 	fmt.Printf(OddOrEvenStr(a, b))
