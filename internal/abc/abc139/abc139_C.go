@@ -34,10 +34,12 @@ func TestC() {
 			break
 		}
 		// tmp = 0
-		j := i + tmp
-		if i+1 > j {
-			j = i + 1
-		}
+		i += tmp
+		// j := i + tmp
+		// if i+1 > j {
+		fmt.Println("i : ", i)
+		j := i + 1
+		// }
 		tmp = 0
 		for ; j < n; j++ {
 			fmt.Println("j : ", j)
@@ -45,11 +47,11 @@ func TestC() {
 				break
 			}
 			tmp++
-			fmt.Println("tmp++")
+			fmt.Println("tmp++ : ", tmp)
 		}
 		if tmp > max {
 			max = tmp
-			fmt.Println("max upd")
+			fmt.Println("max upd : ", max)
 		}
 
 	}
