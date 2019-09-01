@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"strings"
 )
 
 // TestC is...
@@ -14,46 +13,37 @@ func TestC() {
 	fmt.Scanln(&n)
 
 	var sc = bufio.NewScanner(os.Stdin)
-	var list = make([]string, n)
-	var listInt = make([]int64, n)
+	var list = make([]int, n)
 
-	if sc.Scan() {
-		list = strings.Fields(sc.Text())
-	}
+	// スペースで区切られた各単語を、スペース削除してスキャナーを分割する
+	// e.g. 1 2 3 4 5
+	//  -> 1
+	//     2
+	//     3
+	//     4
+	//     5
+	sc.Split(bufio.ScanWords)
 
-	for idx, value := range list {
-		// valueInt, _ := strconv.Atoi(value)
-		valueInt, _ := strconv.ParseInt(value, 10, 64)
-		listInt[idx] = valueInt
+	for idx := range list {
+		if sc.Scan() {
+			valueInt, _ := strconv.Atoi(sc.Text())
+			list[idx] = valueInt
+		}
 	}
 
 	max, tmp := 0, 0
-	fmt.Println(listInt)
-	for i := 0; i < n-1; i++ {
-		if 0 >= n-max {
-			break
-		}
-		// tmp = 0
-		i += tmp
-		// j := i + tmp
-		// if i+1 > j {
-		fmt.Println("i : ", i)
-		j := i + 1
-		// }
-		tmp = 0
-		for ; j < n; j++ {
-			fmt.Println("j : ", j)
-			if listInt[j] > listInt[j-1] {
-				break
-			}
+	for i := n - 1; i > 0; i-- {
+		if list[i-1] >= list[i] {
 			tmp++
-			fmt.Println("tmp++ : ", tmp)
-		}
-		if tmp > max {
-			max = tmp
-			fmt.Println("max upd : ", max)
+		} else {
+			tmp = 0
 		}
 
+		if tmp > max {
+			max = tmp
+		}
 	}
+
 	fmt.Println(max)
+
 }
