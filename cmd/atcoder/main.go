@@ -1,12 +1,14 @@
 package main
 
 import (
-	"atcoder/src/abc/abc138"
 	"fmt"
+
+	"github.com/cscs8/atcoder/internal/abs"
 )
 
 func main() {
 	fmt.Printf("hello, world!\n")
 	// sub.Test4()
-	abc138.TestC()
+	// abc137.TestD()
+	abs.Test5()
 }
