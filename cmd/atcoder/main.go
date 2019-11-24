@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/cscs8/atcoder/internal/abc/abc144"
+	"github.com/cscs8/atcoder/internal/abc/abc146"
 )
 
 func main() {
 	fmt.Printf("hello, world!\n")
-	abc144.TestC()
+	abc146.TestC()
 }
