@@ -24,5 +24,8 @@ jobs:
             dep ensure
         fi
 
+    - name: ls
+      run: ls -l
+      
     - name: Build
       run: go build -v .
