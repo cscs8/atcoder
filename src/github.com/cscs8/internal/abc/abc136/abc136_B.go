@@ -99,6 +99,7 @@ func runB(s string, i int) int {
 	return sum + 9
 }
 
+// TestB is ...
 func TestB() {
 	var s string
 	fmt.Scanf("%s", &s)
