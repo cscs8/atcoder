@@ -26,8 +26,11 @@ jobs:
     - name: echo
       run: echo $GITHUB_WORKSPACE
     
+    - name: echo gopath
+      run: echo $GOPATH
+    
     - name: gopath
-      run: export GOPATH=$GOPATH;$GITHUB_WORKSPACE
+      run: export GOPATH=$GITHUB_WORKSPACE
 
     - name: Get dependencies
       run: |
