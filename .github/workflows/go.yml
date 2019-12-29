@@ -42,6 +42,6 @@ jobs:
         GOPATH: /home/runner/work/atcoder/atcoder/go
 
     - name: Build
-      run: go build -v .
+      run: go build -v ./go/src/github.com/cscs8/atcoder/cmd/atcoder/main.go
       env:
         GOPATH: /home/runner/work/atcoder/atcoder/go
