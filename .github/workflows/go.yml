@@ -18,7 +18,7 @@ jobs:
 
     - name: Get dependencies
       run: |
-        md github.com/cscs8/atcoder
+        mkdir github.com/cscs8/atcoder
         cd ./github.com/cscs8/atcoder
         ls -l
         go get -v -t -d ./...
