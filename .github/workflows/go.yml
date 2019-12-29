@@ -39,9 +39,9 @@ jobs:
             dep ensure
         fi
       env:
-        GOPATH: /home/runner/work/atcoder/go
+        GOPATH: /home/runner/work/atcoder/atcoder/go
 
     - name: Build
       run: go build -v .
       env:
-        GOPATH: /home/runner/work/atcoder/go
+        GOPATH: /home/runner/work/atcoder/atcoder/go
