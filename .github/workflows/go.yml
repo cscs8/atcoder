@@ -15,22 +15,21 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
+      with:
+        path: go/src/github.com/cscs8/atcoder
     
     
-    - name: pwd
-      run: pwd
-      
-    - name: ls
-      run: ls -l
-      
-    - name: echo
-      run: echo $GITHUB_WORKSPACE
-    
-    - name: echo gopath
-      run: echo $GOPATH
-    
-    - name: gopath
-      run: export GOPATH=$GITHUB_WORKSPACE
+    # https://laszlo.cloud/setting-gopath-in-github-actions
+    - name: Debug
+      run: |
+        pwd
+        echo ${HOME}
+        echo ${GITHUB_WORKSPACE}
+        echo ${GOPATH}
+        echo ${GOROOT}
+      env:
+        GOPATH: /home/runner/work/atcoder/go
+
 
     - name: Get dependencies
       run: |
@@ -39,6 +38,10 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
+      env:
+        GOPATH: /home/runner/work/atcoder/go
 
     - name: Build
       run: go build -v .
+      env:
+        GOPATH: /home/runner/work/atcoder/go
