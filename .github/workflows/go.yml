@@ -18,7 +18,9 @@ jobs:
     
     - name: ls
       run: ls -l
-          echo $GITHUB_WORKSPACE
+      
+    - name: echo
+      run: echo $GITHUB_WORKSPACE
 
     - name: Get dependencies
       run: |
