@@ -28,6 +28,7 @@ func run(array []string) int {
 	return 0
 }
 
+// TestA is ...
 func TestA() {
 	var n string
 	var sc = bufio.NewScanner(os.Stdin)
